@@ -1,0 +1,8 @@
+{
+  "ldrpg_data_format": 1,
+  "name": "wooden-sword-sb",
+  "data": {
+    "damage-min": 1,
+    "damage-max": 3
+  }
+}

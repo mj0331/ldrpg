@@ -1,0 +1,9 @@
+{
+  "ldrpg_data_format": 1,
+  "name": "warrior-sb",
+  "data": {
+    "hp": 10,
+    "attack": 3,
+    "defense": 1
+  }
+}
