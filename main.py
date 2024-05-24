@@ -7,9 +7,13 @@ from gamemodes.turn_based_combat_gamemode import TurnBasedCombatGamemode
 from actors.character import Character
 from resources.resource_manager import ResourceManager
 from pathlib import Path
+from devtools.home import DevToolsUI
+
 
 # Press the green button in the gutter to run the script.
-if __name__ == '__main__':
+if __name__ in {"__main__", "__mp_main__"}:
+    enable_devtools = True
+
     resource_manager = ResourceManager(Path('data'))
     print(resource_manager.resources)
 
@@ -20,19 +24,23 @@ if __name__ == '__main__':
                       combat_stat_block_resource=resource_manager.resources[
                           'ldrpg_base/characters/combat_stats/warrior'])
 
-    print(char1)
-    print(char2)
+    if enable_devtools:
+        devtools_ui = DevToolsUI(resource_manager=resource_manager)
+        devtools_ui.run()
 
-    gm = TurnBasedCombatGamemode(characters=[char1, char2])
-
-    # Just run a fixed number of ticks for testing
-    MAX_TICKS = 0
-    current_tick = 0
-
-    gm.begin_gamemode()
-
-    while current_tick < MAX_TICKS:
-        gm.on_gamemode_tick()
-        current_tick += 1
-
-    gm.end_gamemode()
+    # print(char1)
+    # print(char2)
+    #
+    # gm = TurnBasedCombatGamemode(characters=[char1, char2])
+    #
+    # # Just run a fixed number of ticks for testing
+    # MAX_TICKS = 0
+    # current_tick = 0
+    #
+    # gm.begin_gamemode()
+    #
+    # while current_tick < MAX_TICKS:
+    #     gm.on_gamemode_tick()
+    #     current_tick += 1
+    #
+    # gm.end_gamemode()
